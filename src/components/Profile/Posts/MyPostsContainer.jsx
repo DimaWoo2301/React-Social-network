@@ -32,8 +32,10 @@ const MyPostsContainer = () => {
     </StoreContext.Consumer>
   );
 };
-let mapStateToProps = () => {
-  return {};
+let mapStateToProps = (state) => {
+  return {
+    postsData: state.profilePage.postsData;
+  };
 };
 
 let mapDispatchToProps = () => {
