@@ -1,0 +1,12 @@
+.posts{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.message{
+    display: flex;
+    width: 800px;
+    padding: 20px;
+    border: none;
+    border-radius: 7px;
+}

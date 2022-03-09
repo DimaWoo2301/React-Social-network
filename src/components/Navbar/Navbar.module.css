@@ -1,0 +1,40 @@
+.navbar {
+    padding-right: 50px;
+}
+.navbar li {
+    list-style-type: none;
+}
+.item {
+    color: red;
+}
+.item:hover {
+    color: #AC0340;
+    border-bottom: 2px solid red;
+}
+.settings_nav {
+    padding-top: 20px;
+}
+.activeLink{
+    color: black;
+}
+.title{
+    font-size: 30px;
+}
+.friends{
+    display: flex;
+}
+.itemFriend{
+    display: flex;
+    flex-direction: column;
+}
+.itemFriend img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.line{
+    width: 150px;
+    border-bottom: #dce1e6 solid 3px;
+    border-radius: 50px;
+    margin: 20px 0 10px 0;
+}

@@ -1,0 +1,21 @@
+.wrapper{
+    display: flex;
+}
+.title{
+    margin: 0;
+}
+.name{
+    padding-right: 100px;
+}
+.addText{
+    margin-top: 50px;
+    display: flex;
+    width: 800px;
+    padding: 20px;
+    border: none;
+    border-radius: 7px;
+    flex-direction: column-reverse;
+}
+.dialogsContainer{
+    height: 700px;
+}

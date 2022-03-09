@@ -1,0 +1,26 @@
+.dialog{
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+}
+.item li {
+    list-style-type: none;
+}
+.activeLink{
+    color: red;
+}
+.item img{
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.item{
+    align-items: center;
+    display: flex;
+}
+.avatar{
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+}
+
