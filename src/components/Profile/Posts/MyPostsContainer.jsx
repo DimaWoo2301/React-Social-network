@@ -1,4 +1,3 @@
-import React from "react";
 import {
   addPostActionCreate,
   updateNewPostTextActionCreate,
@@ -6,41 +5,24 @@ import {
 import MyPosts from "./MyPosts";
 import { connect } from "react-redux";
 
-const MyPostsContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState();
-
-        let addPost = () => {
-          store.dispatch(addPostActionCreate());
-        };
-
-        let onPostChange = (text) => {
-          store.dispatch(updateNewPostTextActionCreate(text));
-        };
-
-        return (
-          <MyPosts
-            postsData={state.profilePage.postsData}
-            newPostText={state.profilePage.newPostText}
-            addPostActionCreate={addPost}
-            updateNewPostTextActionCreate={onPostChange}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
-};
 let mapStateToProps = (state) => {
   return {
-    postsData: state.profilePage.postsData;
+    postsData: state.profilePage.postsData,
+    newPostText: state.profilePage.newPostText,
   };
 };
 
-let mapDispatchToProps = () => {
-  return {};
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: () => {
+      dispatch(addPostActionCreate());
+    },
+
+    updateNewPostText: (text) => {
+      dispatch(updateNewPostTextActionCreate(text));
+    },
+  };
 };
-const MyPostsContainers = connect()(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;
