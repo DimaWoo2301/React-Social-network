@@ -21,25 +21,25 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case addMessage: {
-      let newPost = {
-        id: "5",
-        name: "Ivan",
-        text: state.newMessagePostText,
-      };
-      let stateCopy = { ...state };
-      stateCopy.messageData = [...state.messageData];
-      if (stateCopy.newMessagePostText === "") {
-        alert("Ошибка, нет символов");
-      } else {
-        stateCopy.messageData.push(newPost);
+      if (!state.newMessagePostText) {
+        alert("Нет текста");
+        return state;
       }
-      stateCopy.newMessagePostText = "";
-      return stateCopy;
+      return {
+        ...state,
+        messageData: [
+          ...state.messageData,
+          {
+            id: "5",
+            name: "Ivan",
+            text: state.newMessagePostText,
+          },
+        ],
+        newMessagePostText: "",
+      };
     }
     case updateNewMessagePostText: {
-      let stateCopy = { ...state };
-      stateCopy.newMessagePostText = action.newText;
-      return stateCopy;
+      return { ...state, newMessagePostText: action.newText };
     }
     default:
       return state;

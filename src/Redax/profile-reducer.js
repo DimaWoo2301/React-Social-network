@@ -14,27 +14,26 @@ let initialState = {
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case addPost: {
-      let newPost = {
-        id: "5",
-        name: "Ivan",
-        text: state.newPostText,
-        like: 0,
-      };
-
-      let stateCopy = { ...state };
-      stateCopy.postsData = [...state.postsData];
-      if (stateCopy.newPostText === "") {
-        alert("Ошибка, нет символов");
-      } else {
-        stateCopy.postsData.push(newPost);
+      if (!state.newPostText) {
+        alert("Нет текста");
+        return state;
       }
-      stateCopy.newPostText = "";
-      return stateCopy;
+      return {
+        ...state,
+        postsData: [
+          ...state.postsData,
+          {
+            id: "5",
+            name: "Ivan",
+            text: state.newPostText,
+            like: 0,
+          },
+        ],
+        newPostText: "",
+      };
     }
     case updateNewPostText: {
-      let stateCopy = { ...state };
-      stateCopy.newPostText = action.newText;
-      return stateCopy;
+      return { ...state, newPostText: action.newText };
     }
     default:
       return state;
