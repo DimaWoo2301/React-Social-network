@@ -1,0 +1,39 @@
+.wrapper{
+    display: flex;
+    padding-bottom: 30px;
+}
+.wrapper img {
+    width: 70px;
+    border-radius: 50%;
+}
+.userAvatar{
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+.itemWrapper{
+    display: flex;
+    justify-content: space-between;
+    border: red 2px solid;
+    border-radius: 10px;
+    width: 600px;
+    padding: 5px;
+    margin-left: 20px;
+}
+.itemWrapper h2{
+    margin: 0;
+}
+.avatarLocalInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.avatarGlobalInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.button{
+    margin-top: 10px;
+}
