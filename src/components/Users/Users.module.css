@@ -9,7 +9,7 @@
 .userAvatar{
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
+    padding-right: 5px;
 }
 .itemWrapper{
     display: flex;
@@ -35,5 +35,6 @@
     align-items: flex-end;
 }
 .button{
+    padding: 0 5px 0 5px;
     margin-top: 10px;
 }
