@@ -1,0 +1,8 @@
+.imgLoading{
+    position: fixed;
+    z-index: 2;
+    left: 430px;
+    top: 115px;
+    width: 1000px;
+    height: 1000px;
+}
