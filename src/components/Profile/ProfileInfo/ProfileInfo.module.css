@@ -9,12 +9,7 @@
     object-fit: cover;
     border-radius: 50%;
 }
-.avatar{
-    background-image: url("../../../img/imgmy.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-color: #AC0340;
+.avatar img{
     width: 150px;
     height: 150px;
     border-radius: 50%;

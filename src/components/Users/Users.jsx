@@ -32,7 +32,7 @@ let Users = (props) => {
         {props.usersData.map((users) => (
           <div className={s.wrapper} key={users.id}>
             <div className={s.userAvatar}>
-              <NavLink to={"/profile"}>
+              <NavLink to={"/profile/" + users.id}>
                 <img
                   src={
                     users.photos.small != null ? users.photos.small : incognito
