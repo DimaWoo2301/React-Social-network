@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Users.module.css";
 import incognito from "../../img/incognet.jpg";
 import cn from "classnames";
+import { NavLink } from "react-router-dom";
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
   let pages = [];
@@ -31,12 +32,14 @@ let Users = (props) => {
         {props.usersData.map((users) => (
           <div className={s.wrapper} key={users.id}>
             <div className={s.userAvatar}>
-              <img
-                src={
-                  users.photos.small != null ? users.photos.small : incognito
-                }
-                alt=""
-              />
+              <NavLink to={"/profile"}>
+                <img
+                  src={
+                    users.photos.small != null ? users.photos.small : incognito
+                  }
+                  alt=""
+                />
+              </NavLink>
               {users.followed ? (
                 <button
                   className={s.button}
