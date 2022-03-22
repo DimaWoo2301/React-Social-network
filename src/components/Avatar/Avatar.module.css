@@ -1,0 +1,12 @@
+.nameAvatar{
+    background-color: #A5A5A5;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: bold ;
+    border: 2px solid black;
+}
