@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../Preloader/Preloader";
-import avatar from "../../../img/imgmy.jpg";
 import incognito from "../../../img/incognet.jpg";
+import Avatar from "../../Avatar/Avatar";
 const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
@@ -20,13 +20,9 @@ const ProfileInfo = (props) => {
       />
       <div className={s.card}>
         <div className={s.avatar}>
-          <img
-            src={
-              props.profile.photos.small != null
-                ? props.profile.photos.small
-                : avatar
-            }
-            alt=""
+          <Avatar
+            name={props.profile.fullName}
+            photo={props.profile.photos.small}
           />
         </div>
         <div className={s.card_info}>

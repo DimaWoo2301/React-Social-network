@@ -35,8 +35,11 @@
     align-items: flex-end;
 }
 .button{
-    padding: 0 5px 0 5px;
+    padding: 5px 5px 5px 5px;
     margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #D0CEC4;
 }
 .activePage{
     background-color: #A5A5A5;
@@ -60,7 +63,4 @@
     display: flex;
     justify-content: center;
     margin: 5px 0 10px 0;
-}
-.wrapperNumberPage:hover{
-    border-bottom: 5px solid red;
 }

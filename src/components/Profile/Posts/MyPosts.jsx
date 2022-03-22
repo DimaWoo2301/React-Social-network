@@ -26,14 +26,18 @@ const MyPosts = (props) => {
   return (
     <div>
       <h2>My post</h2>
-      <input
-        onChange={onPostChange}
-        ref={newPostElement}
-        placeholder="You text"
-        className={s.message}
-        value={props.newPostText}
-      />
-      <button onClick={addPost}>Send</button>
+      <div className={s.wrapper}>
+        <input
+          onChange={onPostChange}
+          ref={newPostElement}
+          placeholder="You text"
+          className={s.message}
+          value={props.newPostText}
+        />
+        <button className={s.button} onClick={addPost}>
+          Send
+        </button>
+      </div>
       <div className={s.posts}>{postElements}</div>
     </div>
   );
