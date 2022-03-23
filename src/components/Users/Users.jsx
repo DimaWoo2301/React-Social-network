@@ -38,8 +38,12 @@ let Users = (props) => {
               </NavLink>
               {users.followed ? (
                 <button
+                  disabled={props.followInProgress.some(
+                    (id) => id === users.id
+                  )}
                   className={s.button}
                   onClick={() => {
+                    props.toggleFollowInProgress(true, users.id);
                     axios
                       .delete(
                         `https://social-network.samuraijs.com/api/1.0/follow/` +
@@ -52,6 +56,7 @@ let Users = (props) => {
                         }
                       )
                       .then((response) => {
+                        props.toggleFollowInProgress(false, users.id);
                         if (response.data.resultCode === 0) {
                           props.unFollow(users.id);
                         }
@@ -62,8 +67,12 @@ let Users = (props) => {
                 </button>
               ) : (
                 <button
+                  disabled={props.followInProgress.some(
+                    (id) => id === users.id
+                  )}
                   className={s.button}
                   onClick={() => {
+                    props.toggleFollowInProgress(true, users.id);
                     axios
                       .post(
                         `https://social-network.samuraijs.com/api/1.0/follow/` +
@@ -77,6 +86,7 @@ let Users = (props) => {
                         }
                       )
                       .then((response) => {
+                        props.toggleFollowInProgress(false, users.id);
                         if (response.data.resultCode === 0) {
                           props.follow(users.id);
                         }
