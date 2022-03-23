@@ -1,8 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
-import axios from "axios";
 import { connect } from "react-redux";
-import { setUsersProfile } from "../../Redax/profile-reducer";
+import { getUsers, setUsersProfile } from "../../Redax/profile-reducer";
 import { withRouter } from "react-router-dom";
 
 export class ProfileContainer extends React.Component {
@@ -11,11 +10,7 @@ export class ProfileContainer extends React.Component {
     if (!userId) {
       userId = 2;
     }
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-      .then((response) => {
-        this.props.setUsersProfile(response.data);
-      });
+    this.props.getUsers(userId);
   }
 
   render() {
@@ -28,6 +23,6 @@ let mapStateToProps = (state) => ({
 
 let WitchUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { setUsersProfile })(
+export default connect(mapStateToProps, { setUsersProfile, getUsers })(
   WitchUrlDataContainerComponent
 );
