@@ -1,4 +1,4 @@
-import userAPI from "../components/Api/Api";
+import { authAPI } from "../components/Api/Api";
 
 const set_User_Data = "SET_USER_DATA";
 const updateNewMessagePostText = "UPDATE-NEW-MESSAGE-POST-TEXT";
@@ -35,7 +35,7 @@ export const updateNewMassagePostTextActionCreate = (text) => ({
 
 export const loginExamination = () => {
   return (dispatch) => {
-    userAPI.login().then((response) => {
+    authAPI.me().then((response) => {
       if (response.data.resultCode === 0) {
         let { id, email, login } = response.data.data;
         dispatch(setUserData(id, email, login));
