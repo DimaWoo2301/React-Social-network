@@ -1,8 +1,10 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { getUsers, setUsersProfile } from "../../Redax/profile-reducer";
+import { getUsers, setUsersProfile } from "../../redax/profile-reducer";
+import { WithAuthRedirect } from "../../huc/WithAuthRedirect";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 export class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -21,8 +23,8 @@ let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-let WitchUrlDataContainerComponent = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, { setUsersProfile, getUsers })(
-  WitchUrlDataContainerComponent
-);
+export default compose(
+  connect(mapStateToProps, { setUsersProfile, getUsers }),
+  withRouter,
+  WithAuthRedirect
+)(ProfileContainer);

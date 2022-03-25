@@ -5,10 +5,12 @@ import {
   getUsersThunk,
   follow,
   unFollow,
-} from "../../Redax/users-reducer";
+} from "../../redax/users-reducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../Preloader/Preloader";
+import { WithAuthRedirect } from "../../huc/WithAuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -35,6 +37,7 @@ class UsersContainer extends React.Component {
     );
   }
 }
+
 let mapStateToProps = (state) => {
   return {
     usersData: state.usersPage.usersData,
@@ -46,10 +49,13 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  follow,
-  unFollow,
-  setCurrentPage,
-  toggleFollowInProgress,
-  getUsersThunk,
-})(UsersContainer);
+export default compose(
+  connect(mapStateToProps, {
+    follow,
+    unFollow,
+    setCurrentPage,
+    toggleFollowInProgress,
+    getUsersThunk,
+  }),
+  WithAuthRedirect
+)(UsersContainer);
