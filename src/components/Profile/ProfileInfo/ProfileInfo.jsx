@@ -24,7 +24,10 @@ const ProfileInfo = (props) => {
             name={props.profile.fullName}
             photo={props.profile.photos.small}
           />
-          <ProfileStatus status={"hellow"} />
+          <ProfileStatus
+            status={props.status}
+            updateStatus={props.updateStatus}
+          />
         </div>
         <div className={s.card_info}>
           <h2>Меня зовут: {props.profile.fullName}</h2>

@@ -1,4 +1,5 @@
-import userAPI from "../components/Api/Api";
+import { userAPI } from "../components/Api/Api";
+
 const Un_Follow = "UN_FOLLOW";
 const follow_ = "FOLLOW_";
 const set_Users = "SET_USERS";
