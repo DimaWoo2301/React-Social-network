@@ -1,29 +1,30 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../Preloader/Preloader";
-import incognito from "../../../img/incognet.jpg";
 import Avatar from "../../Avatar/Avatar";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
   return (
     <div>
-      <img
-        className={s.wall_img}
-        src={
-          !props.profile.photos.large != null
-            ? props.profile.photos.large
-            : incognito
-        }
-        alt=""
-      />
+      {/*<img*/}
+      {/*  className={s.wall_img}*/}
+      {/*  src={*/}
+      {/*    !props.profile.photos.large != null*/}
+      {/*      ? props.profile.photos.large*/}
+      {/*      : incognito*/}
+      {/*  }*/}
+      {/*  alt=""*/}
+      {/*/>*/}
       <div className={s.card}>
         <div className={s.avatar}>
           <Avatar
             name={props.profile.fullName}
             photo={props.profile.photos.small}
           />
+          <ProfileStatus status={"hellow"} />
         </div>
         <div className={s.card_info}>
           <h2>Меня зовут: {props.profile.fullName}</h2>

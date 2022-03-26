@@ -1,0 +1,12 @@
+.wrapper{
+    padding: 10px 5px 10px 5px;
+}
+.statusText{
+    padding-left: 10px;
+}
+.statusInput{
+    border-radius: 5px;
+    border: 1px solid red;
+    width: 125px;
+    height: 30px;
+}

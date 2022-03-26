@@ -14,6 +14,11 @@
     height: 150px;
     border-radius: 50%;
 }
+.avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .card {
     display: flex;
 
