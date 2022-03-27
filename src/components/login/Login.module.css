@@ -1,0 +1,45 @@
+.wrapper{
+  margin: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 30px 40px 30px;
+}
+.wrapper h1{
+  margin: 0;
+}
+.item{
+  padding-top: 30px;
+}
+.input{
+  display: flex;
+  width: 400px;
+  padding: 20px;
+  border: none;
+  border-bottom-left-radius: 10px;
+  background-color: #DEDFE1;
+
+}
+.remember{
+  padding-left: 20px;
+}
+
+.button{
+  padding: 17px 35px 17px 35px;
+  border-radius: 6px;
+  border: none;
+  background-color: #5181B8;
+  color: #ffffff  ;
+}
+.processLogin{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+.link{
+  padding-left: 20px;
+  color: #2A7DB8;
+}
