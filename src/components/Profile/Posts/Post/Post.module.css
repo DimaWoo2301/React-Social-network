@@ -13,3 +13,7 @@
     display: flex;
     align-items: center;
 }
+.pen{
+    height: 30px;
+    max-width: 30px;
+}
