@@ -8,7 +8,7 @@ import {
 } from "../../redax/users-reducer";
 import React from "react";
 import Users from "./Users";
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../Common/Preloader/Preloader";
 import { WithAuthRedirect } from "../../huc/WithAuthRedirect";
 import { compose } from "redux";
 

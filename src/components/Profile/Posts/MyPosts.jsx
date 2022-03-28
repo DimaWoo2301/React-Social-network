@@ -3,18 +3,22 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { Field, reduxForm } from "redux-form";
 import {
-  maxLength30,
-  minLength2,
+  maxLengthCreator,
+  minLengthCreator,
   requiredField,
 } from "../../../validator/Validator";
+import Input from "../../Common/FormsControl/FormsControl";
+
+const maxLength = maxLengthCreator(10);
+const minLength = minLengthCreator(2);
 
 let MyPostForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit} action="">
       <div className={s.item}>
         <Field
-          validate={[requiredField, maxLength30, minLength2]}
-          component={"input"}
+          validate={[requiredField, maxLength, minLength]}
+          component={Input}
           name={"text"}
           placeholder="You text"
           className={s.message}

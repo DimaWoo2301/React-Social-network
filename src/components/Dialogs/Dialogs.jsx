@@ -3,13 +3,23 @@ import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import { Field, reduxForm } from "redux-form";
+import {
+  maxLengthCreator,
+  minLengthCreator,
+  requiredField,
+} from "../../validator/Validator";
+import Input from "../Common/FormsControl/FormsControl";
+
+const maxLength = maxLengthCreator(100);
+const minLength = minLengthCreator(1);
 
 let DialogsForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit} action="">
       <div>
         <Field
-          component={"input"}
+          validate={[requiredField, maxLength, minLength]}
+          component={Input}
           name={"text"}
           className={s.addText}
           placeholder="You text"
