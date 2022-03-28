@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
-import { loginExamination } from "../../redax/auth-reducer";
+import { loginExamination, loginOut } from "../../redax/auth-reducer";
+import { Redirect } from "react-router-dom";
 
 export class HeaderContainer extends React.Component {
   componentDidMount() {
@@ -9,6 +10,14 @@ export class HeaderContainer extends React.Component {
   }
 
   render() {
+    if (!this.props.isAuth) {
+      return (
+        <>
+          <Redirect to={"/login"} />
+          <Header {...this.props} />;
+        </>
+      );
+    }
     return <Header {...this.props} />;
   }
 }
@@ -19,4 +28,6 @@ let mapStateToProps = (state) => ({
 
 // let WitchUrlDataContainerComponent = withRouter(HeaderContainer);
 
-export default connect(mapStateToProps, { loginExamination })(HeaderContainer);
+export default connect(mapStateToProps, { loginExamination, loginOut })(
+  HeaderContainer
+);

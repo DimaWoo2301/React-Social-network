@@ -3,6 +3,10 @@ import s from "./Login.module.css";
 import { Field, reduxForm } from "redux-form";
 import Input from "../Common/FormsControl/FormsControl";
 import { requiredField } from "../../validator/Validator";
+import { connect } from "react-redux";
+import { login } from "../../redax/auth-reducer";
+import { Redirect } from "react-router-dom";
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 let LoginForm = (props) => {
   return (
@@ -23,7 +27,7 @@ let LoginForm = (props) => {
           component={Input}
           name={"password"}
           className={s.input}
-          type="text"
+          type="password"
           placeholder={"Password: ivanov0000"}
         />
       </div>
@@ -46,8 +50,14 @@ let LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
-const Login = () => {
-  const onSubmit = () => {};
+const Login = (props) => {
+  const onSubmit = (formData) => {
+    props.login(formData.login, formData.password, formData.rememberMe);
+  };
+
+  if (props.isAuth) {
+    return <Redirect to={"/profile"} />;
+  }
   return (
     <div className={s.wrapper}>
       <h1>login</h1>
@@ -55,5 +65,7 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;
+mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+export default connect(mapStateToProps, { login })(Login);

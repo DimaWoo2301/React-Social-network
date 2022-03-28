@@ -1,7 +1,6 @@
 import { authAPI } from "../components/Api/Api";
 
 const set_User_Data = "SET_USER_DATA";
-const updateNewMessagePostText = "UPDATE-NEW-MESSAGE-POST-TEXT";
 
 let initialState = {
   userId: null,
@@ -16,7 +15,6 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.data,
-        isAuth: true,
       };
     }
     default:
@@ -24,13 +22,9 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setUserData = (userId, email, login) => ({
+export const setUserData = (userId, email, login, isAuth) => ({
   type: set_User_Data,
-  data: { userId, email, login },
-});
-export const updateNewMassagePostTextActionCreate = (text) => ({
-  type: updateNewMessagePostText,
-  newText: text,
+  data: { userId, email, login, isAuth },
 });
 
 export const loginExamination = () => {
@@ -38,7 +32,28 @@ export const loginExamination = () => {
     authAPI.me().then((response) => {
       if (response.data.resultCode === 0) {
         let { id, email, login } = response.data.data;
-        dispatch(setUserData(id, email, login));
+        dispatch(setUserData(id, email, login, true));
+      }
+    });
+  };
+};
+
+export const login = (email, password, rememberMe) => {
+  console.log(email, password, rememberMe);
+  return (dispatch) => {
+    authAPI.login(email, password, rememberMe).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(loginExamination());
+      }
+    });
+  };
+};
+
+export const loginOut = () => {
+  return (dispatch) => {
+    authAPI.loginOut().then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(setUserData(null, null, null, false));
       }
     });
   };
