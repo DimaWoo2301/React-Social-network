@@ -1,6 +1,31 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import { Field, reduxForm } from "redux-form";
+import {
+  maxLength30,
+  minLength2,
+  requiredField,
+} from "../../../validator/Validator";
+
+let MyPostForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} action="">
+      <div className={s.item}>
+        <Field
+          validate={[requiredField, maxLength30, minLength2]}
+          component={"input"}
+          name={"text"}
+          placeholder="You text"
+          className={s.message}
+        />
+        <button className={s.button}>Send</button>
+      </div>
+    </form>
+  );
+};
+
+const LoginReduxForm = reduxForm({ form: "MyPosts" })(MyPostForm);
 
 const MyPosts = (props) => {
   let postElements = props.postsData.map((el) => (
@@ -12,31 +37,15 @@ const MyPosts = (props) => {
     />
   ));
 
-  let newPostElement = React.createRef();
-
-  let addPost = () => {
-    props.addPost();
-  };
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+  const onSubmit = (values) => {
+    props.addPost(values.text);
   };
 
   return (
     <div>
       <h2>My post</h2>
       <div className={s.wrapper}>
-        <input
-          onChange={onPostChange}
-          ref={newPostElement}
-          placeholder="You text"
-          className={s.message}
-          value={props.newPostText}
-        />
-        <button className={s.button} onClick={addPost}>
-          Send
-        </button>
+        <LoginReduxForm onSubmit={onSubmit} newPostText={props.newPostText} />
       </div>
       <div className={s.posts}>{postElements}</div>
     </div>

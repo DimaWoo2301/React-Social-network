@@ -2,17 +2,29 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
+import { Field, reduxForm } from "redux-form";
+
+let DialogsForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} action="">
+      <div>
+        <Field
+          component={"input"}
+          name={"text"}
+          className={s.addText}
+          placeholder="You text"
+        />
+        <button>Send</button>
+      </div>
+    </form>
+  );
+};
+
+const LoginReduxForm = reduxForm({ form: "Dialogs" })(DialogsForm);
 
 const Dialogs = (props) => {
-  let addMessageElement = React.createRef();
-
-  let addMessage = () => {
-    props.addMessageActionCreate();
-  };
-
-  let onPostChange = () => {
-    let text = addMessageElement.current.value;
-    props.updateNewMassagePostText(text);
+  const onSubmit = (values) => {
+    props.addMessageActionCreate(values.text);
   };
   return (
     <div>
@@ -25,14 +37,7 @@ const Dialogs = (props) => {
         </div>
         <div className={s.dialogsContainer}>
           <Message messageData={props.messageData} />
-          <input
-            onChange={onPostChange}
-            ref={addMessageElement}
-            className={s.addText}
-            placeholder="You text"
-            value={props.newMessagePostText}
-          />
-          <button onClick={addMessage}>send</button>
+          <LoginReduxForm onSubmit={onSubmit} />
         </div>
       </div>
     </div>

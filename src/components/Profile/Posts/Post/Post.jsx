@@ -28,9 +28,7 @@ class Post extends React.Component {
         <div className={s.text}>
           <img src={avatarFace1} alt="" />
           <span>{this.props.name + ":"}</span>
-          {this.state.text}
-        </div>
-        <div>
+          {this.state.editMode && <span>{this.state.text}</span>}
           {!this.state.editMode && (
             <input
               onChange={this.onStatusChange}
@@ -39,6 +37,8 @@ class Post extends React.Component {
               value={this.state.text}
             />
           )}
+        </div>
+        <div>
           {this.state.editMode && (
             <img
               onDoubleClick={this.ActivateEditMode}

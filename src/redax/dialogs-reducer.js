@@ -1,5 +1,4 @@
 const addMessage = "ADD-MESSAGE";
-const updateNewMessagePostText = "UPDATE-NEW-MESSAGE-POST-TEXT";
 
 let initialState = {
   dialogsData: [
@@ -15,13 +14,12 @@ let initialState = {
     { id: 3, name: "Me", text: "Go walk?)" },
     { id: 4, name: "Dmitry", text: "Go))" },
   ],
-  newMessagePostText: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case addMessage: {
-      if (!state.newMessagePostText) {
+      if (!action.text) {
         alert("Нет текста");
         return state;
       }
@@ -32,23 +30,16 @@ const dialogsReducer = (state = initialState, action) => {
           {
             id: "5",
             name: "Ivan",
-            text: state.newMessagePostText,
+            text: action.text,
           },
         ],
-        newMessagePostText: "",
       };
-    }
-    case updateNewMessagePostText: {
-      return { ...state, newMessagePostText: action.newText };
     }
     default:
       return state;
   }
 };
 
-export const addMessageActionCreate = () => ({ type: addMessage });
-export const updateNewMassagePostTextActionCreate = (text) => ({
-  type: updateNewMessagePostText,
-  newText: text,
-});
+export const addMessageActionCreate = (text) => ({ type: addMessage, text });
+
 export default dialogsReducer;

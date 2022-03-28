@@ -24,3 +24,6 @@
     box-shadow: #B5B5B5;
     background-color:#E5E5E5;
 }
+.item{
+    display: flex;
+}

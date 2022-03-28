@@ -6,3 +6,7 @@
     width: 1000px;
     height: 1000px;
 }
+.wrapper{
+    z-index: 1;
+    background-color: #edeef0;
+}
